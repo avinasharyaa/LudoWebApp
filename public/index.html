@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ShareLink Ludo</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Online Ludo Room</p>
+          <h1>Invite friends with one share link or a quick join code.</h1>
+          <p class="hero-text">
+            Create a room, send the link, and start rolling. This version supports 2 to 4 players with real-time turns, captures, safe spots, and a clean board that works on desktop or mobile.
+          </p>
+        </div>
+        <div class="rules-card">
+          <h2>MVP Rules</h2>
+          <ul>
+            <li>Roll a `6` to bring a token out of the yard.</li>
+            <li>Rolling `6` gives you an extra turn.</li>
+            <li>Unsafe squares allow captures that send tokens back.</li>
+            <li>Exact roll is needed to reach the center and win.</li>
+          </ul>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section id="welcomePanel" class="welcome-panel">
+          <article class="card form-card">
+            <h2>Create a room</h2>
+            <p>Start a match and share the link with your friends.</p>
+            <form id="createForm">
+              <label for="createName">Your name</label>
+              <input id="createName" name="name" maxlength="18" placeholder="Aarav" required />
+              <button type="submit">Create Room</button>
+            </form>
+          </article>
+
+          <article class="card form-card">
+            <h2>Join with a code</h2>
+            <p>Paste the room code if your friend sent it separately.</p>
+            <form id="joinForm">
+              <label for="joinName">Your name</label>
+              <input id="joinName" name="name" maxlength="18" placeholder="Maya" required />
+              <label for="joinCode">Room code</label>
+              <input id="joinCode" name="roomCode" maxlength="6" placeholder="AB12CD" required />
+              <button type="submit">Join Room</button>
+            </form>
+          </article>
+        </section>
+
+        <section id="gamePanel" class="game-panel hidden">
+          <div class="room-strip card">
+            <div>
+              <p class="label">Room code</p>
+              <div class="room-code-wrap">
+                <span id="roomCodeBadge" class="room-code">------</span>
+                <button id="copyCodeButton" class="ghost-button" type="button">Copy Code</button>
+              </div>
+            </div>
+            <div class="share-wrap">
+              <p class="label">Share link</p>
+              <div class="share-line">
+                <input id="shareLinkInput" readonly />
+                <button id="copyLinkButton" type="button">Copy Link</button>
+              </div>
+            </div>
+            <div class="connection-wrap">
+              <p class="label">Connection</p>
+              <p id="connectionBadge" class="connection-badge">Connecting</p>
+            </div>
+          </div>
+
+          <div class="game-layout">
+            <article class="card board-card">
+              <div class="board-hud">
+                <div id="dicePanel" class="dice-panel"></div>
+                <p id="boardHint" class="board-hint">Roll the dice, then tap a highlighted token to move it.</p>
+              </div>
+              <svg id="boardSvg" viewBox="0 0 800 800" role="img" aria-label="Ludo board"></svg>
+            </article>
+
+            <aside class="sidebar">
+              <article class="card">
+                <h2>Match State</h2>
+                <p id="statusHeadline" class="status-headline">Create or join a room to begin.</p>
+                <p id="statusSubline" class="status-subline"></p>
+                <div id="hostActions" class="host-actions"></div>
+                <div id="turnActions" class="turn-actions"></div>
+              </article>
+
+              <article class="card">
+                <h2>Players</h2>
+                <div id="playersList" class="players-list"></div>
+              </article>
+
+              <article class="card">
+                <h2>Activity</h2>
+                <div id="logList" class="log-list"></div>
+              </article>
+            </aside>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+    <script src="/app.js"></script>
+  </body>
+</html>

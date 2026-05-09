@@ -1,0 +1,10 @@
+{
+  "name": "sharelink-ludo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A lightweight online Ludo game with share links and room codes.",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  }
+}
